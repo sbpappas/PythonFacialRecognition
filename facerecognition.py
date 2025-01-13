@@ -16,7 +16,7 @@ counter = 0
 
 face_match = False
 
-referenceImage = cv2.imread("referenceImage.jpeg")
+referenceImage = cv2.imread("captured_frame.jpg")
 print("hi")
 print(cv2.__version__)
 
@@ -26,10 +26,13 @@ if not cap.isOpened():
 
 
 def check_face(frame):
+    #cv2.imwrite("captured_frame.jpg", frame)
+
     global face_match
     try:
         if DeepFace.verify(frame, referenceImage.copy())['verified']:
             face_match = True
+            print("face matches")
     except ValueError:
         face_match = False
 
@@ -38,6 +41,7 @@ while True:
     if ret:
         if counter % 30 == 0:
             try: 
+                #check_face(frame.copy())
                 threading.Thread(target = check_face, args = (frame.copy(),)).start() #passed as a tuple
             except ValueError:
                 print("no face")
