@@ -7,7 +7,8 @@ import threading
 
 from deepface import DeepFace
 
-cap = cv2.VideoCapture(0, cv2.CAP_DSHOW) #picks the first camera
+#cap = cv2.VideoCapture(0, cv2.CAP_DSHOW) #picks the first camera
+cap = cv2.VideoCapture(0) #picks the first camera
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
@@ -47,7 +48,7 @@ while True:
         if face_match:
             cv2.putText(frame, "MATCH!!", (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 2, (0,255,0), 3)
         else:
-            cv2.putText(frame, "No MATCH!!", (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 2, (0,255,0), 3)
+            cv2.putText(frame, "NO MATCH", (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,0,0), 3)
 
         cv2.imshow("video",frame)
     else:
