@@ -16,7 +16,7 @@ counter = 0
 
 face_match = False
 
-referenceImage = cv2.imread("captured_frame.jpg")
+referenceImage = cv2.imread("captured_frame.jpg") #just for testing
 print("hi")
 print(cv2.__version__)
 
@@ -52,7 +52,7 @@ while True:
         if face_match:
             cv2.putText(frame, "MATCH!!", (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 2, (0,255,0), 3)
         else:
-            cv2.putText(frame, "NO MATCH", (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,0,0), 3)
+            cv2.putText(frame, "NO MATCH", (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 2, (0,0,255), 3)
 
         cv2.imshow("video",frame)
     else:
