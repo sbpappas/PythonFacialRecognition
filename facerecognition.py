@@ -44,7 +44,7 @@ while True:
                 #check_face(frame.copy())
                 threading.Thread(target = check_face, args = (frame.copy(),)).start() #passed as a tuple
             except ValueError:
-                print("no face")
+                print("face not a match")
                 #pass #does not recognize a face
                 
         counter += 1
@@ -56,7 +56,7 @@ while True:
 
         cv2.imshow("video",frame)
     else:
-        print("not making it through the ret")
+        print("not receiving frame, maybe camera is not connected or working?")
     key = cv2.waitKey(1)
     if key == ord("q"):
         break
