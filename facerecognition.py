@@ -32,7 +32,7 @@ def check_face(frame):
     try:
         if DeepFace.verify(frame, referenceImage.copy())['verified']:
             face_match = True
-            print("face matches")
+            print("positive face match")
     except ValueError:
         face_match = False
 
@@ -56,7 +56,7 @@ while True:
 
         cv2.imshow("video",frame)
     else:
-        print("not receiving frame, maybe camera is not connected or working?")
+        print("not receiving frame, maybe camera is not connected or working...")
     key = cv2.waitKey(1)
     if key == ord("q"):
         break
