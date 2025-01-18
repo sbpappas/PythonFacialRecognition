@@ -44,7 +44,7 @@ while True:
                 #check_face(frame.copy())
                 threading.Thread(target = check_face, args = (frame.copy(),)).start() #passed as a tuple
             except ValueError:
-                print("face not a match")
+                print("face not a match " + counter)
                 #pass #does not recognize a face
                 
         counter += 1
@@ -64,3 +64,8 @@ cv2.destroyAllWindows()
 
 print("hi")
 print(cv2.__version__)
+
+
+# run using /Users/Samuel/.pyenv/versions/3.10.9/bin/python3 facerecognition.py 
+# becuase of library needs and virtual environment
+# usually takes 10 sec to load
