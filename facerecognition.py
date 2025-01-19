@@ -16,7 +16,7 @@ counter = 0
 
 face_match = False
 
-referenceImage = cv2.imread("captured_frame.jpg") #just for testing
+referenceImage = cv2.imread("captured_frame.jpg") # just for testing, could be any image
 print("hi")
 print(cv2.__version__)
 
@@ -58,11 +58,10 @@ while True:
     else:
         print("not receiving frame, maybe camera is not connected or working...")
     key = cv2.waitKey(1)
-    if key == ord("q"):
+    if key == ord("q"): # press q to stop the loop
         break
 cv2.destroyAllWindows()
 
-print("hi")
 print(cv2.__version__)
 
 
