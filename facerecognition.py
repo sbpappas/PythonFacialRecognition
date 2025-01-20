@@ -8,16 +8,15 @@ import threading
 from deepface import DeepFace
 
 #cap = cv2.VideoCapture(0, cv2.CAP_DSHOW) #picks the first camera
-cap = cv2.VideoCapture(0) #picks the first camera
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap = cv2.VideoCapture(0) #picks the first camera that cv2 can find if you have multiple cameras
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640) # the window size
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 counter = 0
 
-face_match = False
+face_match = False 
 
 referenceImage = cv2.imread("captured_frame.jpg") # just for testing, could be any image
-print("hi")
 print(cv2.__version__)
 
 if not cap.isOpened():
@@ -28,9 +27,9 @@ if not cap.isOpened():
 def check_face(frame):
     #cv2.imwrite("captured_frame.jpg", frame)
 
-    global face_match
+    global face_match # should be global because we want to use it everywhere, eventually maybe we can access it from another class?
     try:
-        if DeepFace.verify(frame, referenceImage.copy())['verified']:
+        if DeepFace.verify(frame, referenceImage.copy())['verified']: # if there is a match
             face_match = True
             print("positive face match")
     except ValueError:
@@ -39,7 +38,7 @@ def check_face(frame):
 while True:
     ret, frame = cap.read()
     if ret:
-        if counter % 30 == 0:
+        if counter % 30 == 0: # just so we don't constantly check
             try: 
                 #check_face(frame.copy())
                 threading.Thread(target = check_face, args = (frame.copy(),)).start() #passed as a tuple
